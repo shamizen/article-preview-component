@@ -1,19 +1,21 @@
-let shareBtn_1 = document.querySelector(".share-btn");
-shareBtn_1.addEventListener("click", displayShareOption, false);
+let shareButton = document.querySelectorAll(".share-btn");
+shareButton.forEach((element) => element.addEventListener("click", handleOnClick));
 
-let shareBtn_2 = document.querySelector(".right.share-btn");
-shareBtn_2.addEventListener("click", collapsedShareOption, false);
+document.querySelector(".share-container").classList.add("hidden");
+
+function handleOnClick() {
+  let profileContainer = document.querySelector(".profile-container");
+  profileContainer.className === "profile-container" ? displayShareOption() : collapsedShareOption();
+}
 
 function displayShareOption() {
-  let profileContainer = document.querySelector(".profile-container");
-  let shareContainer = document.querySelector(".share-container");
-  profileContainer.classList.add("display-share");
-  shareContainer.classList.add("display-share");
+  document.querySelector(".profile-container").classList.add("hidden");
+  document.querySelector(".share-container").classList.remove("hidden");
+  document.querySelector(".share-container").classList.add("pop-up");
 }
 
 function collapsedShareOption() {
-  let profileContainer = document.querySelector(".profile-container");
-  let shareContainer = document.querySelector(".share-container");
-  profileContainer.className = "profile-container";
-  shareContainer.className = "share-container";
+  document.querySelector(".profile-container").classList.remove("hidden");
+  document.querySelector(".share-container").classList.remove("pop-up");
+  document.querySelector(".share-container").classList.add("hidden");
 }
